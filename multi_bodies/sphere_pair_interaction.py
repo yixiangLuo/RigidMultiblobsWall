@@ -49,12 +49,12 @@ for ratio_iter in range(len(AS_RATIO)):
             results = open("data/run.mobility.velocity.dat", "r")
             velocity = float_list(results.readline().strip().split('  '))
             results.close()
-            velo_d.append(velocity[0]*6*PI*1.0*1.0/1.0)
+            velo_d.append(velocity)
         velo_d = np.array(velo_d)
-        mean_d = str(np.mean(velo_d))
-        std_d = str(np.std(velo_d))
+        mean_d = ' '.join(str_list(np.mean(velo_d, axis=0)))
+        std_d = ' '.join(str_list(np.std(velo_d, axis=0)))
         curve = open("data/velocity.ratio-"+ str(AS_RATIO[ratio_iter]) +".curve.dat", "a")
-        curve.write(mean_d + " " + std_d + "\n")
+        curve.write(mean_d + "    " + std_d + "\n")
         curve.close()
 
 
