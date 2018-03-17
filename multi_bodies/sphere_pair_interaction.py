@@ -52,7 +52,7 @@ for ratio_iter in range(len(AS_RATIO)):
         velo_d = np.array(velo_d)
         mean_d = ' '.join(str_list(np.mean(velo_d, axis=0)))
         std_d = ' '.join(str_list(np.std(velo_d, axis=0)))
-        curve = open("data/squeeze/velocity.ratio-"+ str(AS_RATIO[ratio_iter]) +".curve.dat", "a")
+        curve = open("data/velocity.ratio-"+ str(AS_RATIO[ratio_iter]) +".curve.dat", "a")
         curve.write(mean_d + "    " + std_d + "\n")
         curve.close()
 
