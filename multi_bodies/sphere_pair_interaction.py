@@ -2,11 +2,10 @@ import sys
 import re
 import numpy as np
 
-d_l = 1.0
-d_u = 4.0
+d_l = 1.5
+d_u = 3.5
 grid = 20
 sample = 20
-PI = 3.141592653
 S_SHELL = 0.26201755389999998
 AS_RATIO = [0.735, 0.5, 0.3, 0.25]
 np.random.seed(1)
@@ -40,7 +39,7 @@ for ratio_iter in range(len(AS_RATIO)):
             rd_quaternion = '	'.join(str_list(rd_quaternion))
 
             bodies = open("Structures/sphere_pair_interaction.clones", "w")
-            bodies.write("2\n0	0	1	1	0	0	0\n"+ str(d_l+(d_u-d_l)/grid*grid_iter) +"	0	1	"+rd_quaternion)
+            bodies.write("2\n0	0	0	1	0	0	0\n"+ str(d_l+(d_u-d_l)/grid*grid_iter) +"	0	0	"+rd_quaternion)
             bodies.close()
 
             sys.argv = ['multi_bodies_utilities.py', '--input-file', 'sphere_pair_interaction.dat']
@@ -53,7 +52,7 @@ for ratio_iter in range(len(AS_RATIO)):
         velo_d = np.array(velo_d)
         mean_d = ' '.join(str_list(np.mean(velo_d, axis=0)))
         std_d = ' '.join(str_list(np.std(velo_d, axis=0)))
-        curve = open("data/velocity.ratio-"+ str(AS_RATIO[ratio_iter]) +".curve.dat", "a")
+        curve = open("data/squeeze/velocity.ratio-"+ str(AS_RATIO[ratio_iter]) +".curve.dat", "a")
         curve.write(mean_d + "    " + std_d + "\n")
         curve.close()
 

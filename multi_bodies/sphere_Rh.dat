@@ -17,7 +17,7 @@ solver_tolerance                       1e-08
 output_name                            data/run.mobility
 
 # Input files
-force_file                             sphere_pair_force.dat
+force_file                             sphere_Rh_force.dat
 #velocity_file                         velocity.dat
 
 # Save more info
