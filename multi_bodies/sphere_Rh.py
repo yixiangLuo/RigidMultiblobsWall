@@ -4,8 +4,9 @@ import numpy as np
 
 sample = 20
 PI = 3.141592653
-S_SHELL = 0.26201755389999998
-AS_RATIO = [0.735, 0.5, 0.3, 0.25]
+S_SHELL = 0.83284136573349932
+# AS_RATIO = [0.735, 0.5, 0.3, 0.25]
+AS_RATIO = [0.5]
 np.random.seed(2)
 
 def str_list(l):

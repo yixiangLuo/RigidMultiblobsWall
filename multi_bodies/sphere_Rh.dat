@@ -2,14 +2,14 @@
 scheme                                 mobility
 
 # Define implementation to compute the blobs mobility
-mobility_blobs_implementation          python_no_wall  # Options: python, C++
-mobility_vector_prod_implementation    python_no_wall  # Options: python, C++, pycuda
+mobility_blobs_implementation          C++_no_wall  # Options: python, C++
+mobility_vector_prod_implementation    C++_no_wall  # Options: python, C++, pycuda
 
 # Set viscosity, gravity and blob radius
 eta                                    1.0
 g                                      0.0
 # blob_radius_start
-blob_radius                            0.192582902116
+blob_radius                            0.416420682867
 # blob_radius_end
 solver_tolerance                       1e-08
 
@@ -24,7 +24,7 @@ force_file                             sphere_Rh_force.dat
 save_body_mobility                     False
 save_blobs_mobility                    False
 
-structure Structures/shell_N_162_Rg_0_9497_Rh_1.vertex Structures/sphere_pair_interaction.clones
-# structure Structures/shell_N_12_Rg_0_7921_Rh_1.vertex Structures/sphere_pair_interaction.clones
+# structure Structures/shell_N_162_Rg_0_9497_Rh_1.vertex Structures/sphere_pair_interaction.clones
+structure Structures/shell_N_12_Rg_0_7921_Rh_1.vertex Structures/sphere_pair_interaction.clones
 
 # plot_velocity_field                      0 15 30 0 15 30 0 15 30

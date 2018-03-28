@@ -39,8 +39,6 @@ while found_functions is False:
 
 # Try to import the visit_writer (boost implementation)
 try:
-  import sys
-  sys.path.append("/usr/local/visit/current/linux-x86_64/lib/site-packages")
   import visit.visit_writer as visit_writer
   visit_writer_found = True
 except ImportError:
