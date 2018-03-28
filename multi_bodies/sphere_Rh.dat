@@ -24,7 +24,7 @@ force_file                             sphere_Rh_force.dat
 save_body_mobility                     False
 save_blobs_mobility                    False
 
-# structure Structures/shell_N_162_Rg_0_9497_Rh_1.vertex Structures/sphere_pair_interaction.clones
-structure Structures/shell_N_12_Rg_0_7921_Rh_1.vertex Structures/sphere_pair_interaction.clones
+# structure Structures/shell_N_162_Rg_0_9497_Rh_1.vertex Structures/sphere_Rh.clones
+structure Structures/shell_N_12_Rg_0_7921_Rh_1.vertex Structures/sphere_Rh.clones
 
 # plot_velocity_field                      0 15 30 0 15 30 0 15 30
