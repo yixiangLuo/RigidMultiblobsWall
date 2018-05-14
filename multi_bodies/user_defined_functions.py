@@ -93,15 +93,16 @@ def blob_blob_force_new(r, *args, **kwargs):
   r_norm = distance between blobs
   b = Debye length
   '''
-  # Get parameters from arguments
-  L = kwargs.get('periodic_length')
-  eps = kwargs.get('repulsion_strength')
-  b = kwargs.get('debye_length')
-
-  # Compute force
-  project_to_periodic_image(r, L)
-  r_norm = np.linalg.norm(r)
-  return -((eps / b) + (eps / r_norm)) * np.exp(-r_norm / b) * r / r_norm**2
+  # # Get parameters from arguments
+  # L = kwargs.get('periodic_length')
+  # eps = kwargs.get('repulsion_strength')
+  # b = kwargs.get('debye_length')
+  #
+  # # Compute force
+  # project_to_periodic_image(r, L)
+  # r_norm = np.linalg.norm(r)
+  # return -((eps / b) + (eps / r_norm)) * np.exp(-r_norm / b) * r / r_norm**2
+  return np.zeros(3)
 multi_bodies_functions.blob_blob_force = blob_blob_force_new
 
 def bodies_external_force_torque_new(bodies, r_vectors, *args, **kwargs):
@@ -124,7 +125,7 @@ def bodies_external_force_torque_new(bodies, r_vectors, *args, **kwargs):
 
   E = kwargs.get('repulsion_strength_wall')
   d = kwargs.get('debye_length_wall')
-  rho = 10;
+  rho = kwargs.get('g');
   maxabs = 1e3
 
   # Double loop over bodies to compute forces
@@ -159,7 +160,7 @@ def body_body_force_torque_new(r, quaternion_i, quaternion_j, *args, **kwargs):
   # Get parameters from arguments
   E = kwargs.get('repulsion_strength')
   d = kwargs.get('debye_length')
-  rho = 10;
+  rho = kwargs.get('g');
   maxabs = 1e3
 
   # Compute force

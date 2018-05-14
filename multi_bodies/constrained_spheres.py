@@ -11,8 +11,9 @@ sample = 20
 def str_list(l):
     return [str(e) for e in list(l)]
 
-para = read_input.ReadInput("constrained_spheres.dat")
-path = "data"
+No = "1"
+para = read_input.ReadInput('inputfiles/constrained_spheres.' + No + '.dat')
+path = "data/" + No
 
 
 np.random.seed(int(para.seed) + 100)
@@ -26,7 +27,7 @@ for sample_iter in range(sample):
     rd_quaternion2 = list(rd_quaternion2/np.linalg.norm(rd_quaternion2, ord=2))
     rd_quaternion2 = '	'.join(str_list(rd_quaternion2))
 
-    bodies = open("Structures/constrained_spheres.clones", "w")
+    bodies = open(os.path.join(path, "constrained_spheres.clones"), "w")
     z = str(para.debye_length_wall)
     bodies.write("3\n \
                 0	0	" + z + "	1	0	0	0\n" + \
@@ -35,7 +36,7 @@ for sample_iter in range(sample):
                 )
     bodies.close()
 
-    sys.argv = ['multi_bodies.py', '--input-file', 'inputfiles/constrained_spheres.1.dat']
+    sys.argv = ['multi_bodies.py', '--input-file', 'inputfiles/constrained_spheres.' + No + '.dat']
     execfile('multi_bodies.py')
 
     with open(os.path.join(path, "run.constrained_spheres.config"), 'r') as f:
