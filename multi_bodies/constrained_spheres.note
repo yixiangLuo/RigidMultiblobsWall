@@ -2,11 +2,11 @@ user_defined_functions.py:
 rho (in two functions) [10 20 50 100]
 
 constrained_spheres.dat:
-seed [1 2 3 4]
 dt [0.0250    0.0042    0.0005    0.0001]
+# blob_radius [0.131008776950000]
 repulsion_strength [4 6 8 10]
 debye_length [2.0100    2.0041    2.0014    2.0006] [2.3]
 repulsion_strength_wall [4 6 8 10]
-debye_length_wall [2]
-blob_radius [0.131008776950000]
-structure vertex [shell_N_162_Rg_0_9497_Rh_1]
+# debye_length_wall [2]
+seed [1 2 3 4]
+# structure vertex [shell_N_162_Rg_0_9497_Rh_1]
