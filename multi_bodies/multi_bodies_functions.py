@@ -12,6 +12,7 @@ from functools import partial
 
 import utils
 from quaternion_integrator.quaternion import Quaternion
+
 # Try to import the forces boost implementation
 try:
   import forces_ext
@@ -24,7 +25,13 @@ try:
 except ImportError:
   found_pycuda = False
 if found_pycuda:
-  import forces_pycuda  
+  try:
+    import pycuda.autoinit
+    autoinit_pycuda = True
+  except:
+    autoinit_pycuda = False
+  if autoinit_pycuda:
+    import forces_pycuda  
 
 # Override forces_pycuda with user defined functions.
 # If forces_pycuda_user_defined does not exists nothing happens.
@@ -145,7 +152,6 @@ def blob_external_force(r_vectors, *args, **kwargs):
   g = kwargs.get('g')
   repulsion_strength_wall = kwargs.get('repulsion_strength_wall') 
   debye_length_wall = kwargs.get('debye_length_wall')
-
   # Add gravity
   f += -g * blob_mass * np.array([0., 0., 1.0])
 
@@ -280,7 +286,6 @@ def body_body_force_torque(r, quaternion_i, quaternion_j, *args, **kwargs):
   '''
   This function compute the force between two bodies
   with vector between locations r.
-
   In this example the torque is zero and the force 
   is derived from a Yukawa potential
   
