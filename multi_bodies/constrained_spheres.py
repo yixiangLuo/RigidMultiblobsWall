@@ -11,7 +11,7 @@ sample = 20
 def str_list(l):
     return [str(e) for e in list(l)]
 
-No = "1"
+No = "2"
 para = read_input.ReadInput('inputfiles/constrained_spheres.' + No + '.dat')
 path = "data/" + No
 
