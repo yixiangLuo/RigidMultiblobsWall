@@ -2,15 +2,15 @@
 scheme                                   Fixman
 
 # Select implementation to compute M and M*f
-mobility_blobs_implementation            python
-mobility_vector_prod_implementation      pycuda
+mobility_blobs_implementation            C++
+mobility_vector_prod_implementation      C++
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
 body_body_force_torque_implementation    python
 
 # Set time step, number of steps and save frequency
-dt                                       0.0001
+dt                                       0.0002
 n_steps                                  1000
 n_save                                   1  
 
@@ -27,7 +27,7 @@ rf_delta                                 1.0e-6
 
 # Set parameters for the blob-blob interation
 repulsion_strength                       10.0
-debye_length                             2.3
+debye_length                             2.1
 
 # Set interaction with the wall
 repulsion_strength_wall                  10.0

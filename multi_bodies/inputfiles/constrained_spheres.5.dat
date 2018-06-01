@@ -2,8 +2,8 @@
 scheme                                   Fixman
 
 # Select implementation to compute M and M*f
-mobility_blobs_implementation            python
-mobility_vector_prod_implementation      pycuda
+mobility_blobs_implementation            C++
+mobility_vector_prod_implementation      C++
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
@@ -11,7 +11,7 @@ body_body_force_torque_implementation    python
 
 # Set time step, number of steps and save frequency
 dt                                       0.0250
-n_steps                                  1000
+n_steps                                  500
 n_save                                   1  
 
 # Set fluid viscosity (eta), gravity (g) and blob radius

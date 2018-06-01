@@ -2,8 +2,8 @@
 scheme                                   Fixman
 
 # Select implementation to compute M and M*f
-mobility_blobs_implementation            python
-mobility_vector_prod_implementation      pycuda
+mobility_blobs_implementation            C++
+mobility_vector_prod_implementation      C++
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
@@ -33,7 +33,7 @@ debye_length                             2.0014
 repulsion_strength_wall                  8.0
 debye_length_wall                        2.0
 
-seed                                     3
+seed                                     13
 
 # Set output name
 output_name                              data/3/run
