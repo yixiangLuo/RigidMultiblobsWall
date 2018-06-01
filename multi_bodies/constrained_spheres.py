@@ -38,7 +38,7 @@ for sample_iter in range(sample):
                 )
     bodies.close()
 
-    sys.argv = ['multi_bodies.py', '--input-file', 'inputfiles/constrained_spheres.' + No + '.dat']
+    sys.argv = ['multi_bodies.py', '--input-file', 'inputfiles/constrained_spheres.dat.' + No]
     execfile('multi_bodies.py')
 
     with open(os.path.join(path, "run.constrained_spheres.config"), 'r') as f:
