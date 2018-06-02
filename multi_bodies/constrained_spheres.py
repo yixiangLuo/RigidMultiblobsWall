@@ -6,7 +6,7 @@ sys.path.append('../')
 from read_input import read_input
 import ntpath
 
-sample = 100
+sample = 10
 
 def str_list(l):
     return [str(e) for e in list(l)]
@@ -16,7 +16,7 @@ para = read_input.ReadInput('inputfiles/constrained_spheres.dat.' + No)
 path = "data/" + No
 
 
-np.random.seed(int(para.seed))
+np.random.seed(int(No))
 
 
 for sample_iter in range(sample):
@@ -36,7 +36,10 @@ for sample_iter in range(sample):
                 str(d[0]) +"	0	" + z + "	" + rd_quaternion1 + "\n" + \
                 str(d[1] * np.cos(np.pi/2.)) +"	" + str(d[1] * np.sin(np.pi/2.)) + "	" + z + "	" + rd_quaternion2
                 )
-    bodies.close()
+    # bodies.write("1\n \
+    #             0	0	" + z + "	" + rd_quaternion1 + "\n"
+    #             )
+    # bodies.close()
 
     sys.argv = ['multi_bodies.py', '--input-file', 'inputfiles/constrained_spheres.dat.' + No]
     execfile('multi_bodies.py')
