@@ -1,25 +1,27 @@
 import sys
 import os
 import re
+from math import sqrt, exp
 
-threadNum = 10
+start = 20
+threadNum = 5
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
-dt = 0.0002
 n_steps = 500
-rho = 100.0       # named "g" in the file
-# blob_radius = 0.26201755389999998/2       # 162 blobs
-blob_radius = 0.13505535066599994/2       # 642 blobs
-kT = 0.0041419464
-repulsion_strength = 10.0     # E
+blob_radius = 0.26201755389999998/2       # 162 blobs
+# blob_radius = 0.13505535066599994/2        # 642 blobs
+kT = 1
+repulsion_strength = 8.0     # E
+rho = 0.3663/sqrt(repulsion_strength)*exp(repulsion_strength/kT)       # named "g" in the file
+dt = 20/repulsion_strength/rho**2
 debye_length = 2.1
 repulsion_strength_wall = repulsion_strength
 debye_length_wall = 2.0
-# modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
-modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
+modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
+# modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
 
-for thread in range(threadNum):
+for thread in range(start, start+threadNum):
     with open(os.path.join(inputFilePath, "constrained_spheres.dat." + str(thread)), "w") as inputfile:
         inputfile.write('''# Select integrator
 scheme                                   Fixman
