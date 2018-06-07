@@ -8,7 +8,7 @@ import sys
 import time
 
 # Add path to HydroGrid and import module
-# sys.path.append('../../HydroGrid/src/')
+sys.path.append('../../HydroGrid/src/')
 
 
 # Find project functions
@@ -631,6 +631,7 @@ if __name__ == '__main__':
   integrator.periodic_length = read.periodic_length
   integrator.update_PC = read.update_PC
   integrator.print_residual = args.print_residual
+  integrator.do_rotation = read.do_rotation
 
   # Initialize HydroGrid library:
   if found_HydroGrid:

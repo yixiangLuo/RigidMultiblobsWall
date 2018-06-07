@@ -1,22 +1,25 @@
 # Select integrator
-scheme                                   Fixman
+scheme                                   stochastic_Slip_Trapz
 
 # Select implementation to compute M and M*f
-mobility_blobs_implementation            C++
-mobility_vector_prod_implementation      C++
+mobility_blobs_implementation            python
+mobility_vector_prod_implementation      pycuda
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
 body_body_force_torque_implementation    python
 
 # Set time step, number of steps and save frequency
-dt                                       0.0500034883968
+dt                                       0.0033836181325011152
 n_steps                                  500
 n_save                                   1
 
+do_rotation                              False
+update_PC                                100
+
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0
-g                                        9.99965117857
+g                                        24.312203710398567
 blob_radius                              0.13100877695
 
 # Stochastic parameters
@@ -26,11 +29,11 @@ kT                                       1
 rf_delta                                 1.0e-6
 
 # Set parameters for the blob-blob interation
-repulsion_strength                       4.0
+repulsion_strength                       5
 debye_length                             2.1
 
 # Set interaction with the wall
-repulsion_strength_wall                  4.0
+repulsion_strength_wall                  5
 debye_length_wall                        2.0
 
 # seed                                     0
@@ -43,4 +46,4 @@ save_clones                              one_file
 # Load rigid bodies configuration, provide
 # *.vertex and *.clones files
 structure Structures/shell_N_162_Rg_0_9497_Rh_1.vertex data/1/constrained_spheres.clones
-        
+            
