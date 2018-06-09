@@ -6,12 +6,12 @@ sys.path.append('../')
 from read_input import read_input
 import ntpath
 
-sample = 100
+sample = 50
 
 def str_list(l):
     return [str(e) for e in list(l)]
 
-No = "0"
+No = "3"
 para = read_input.ReadInput('inputfiles/constrained_spheres.dat.' + No)
 path = "data/" + No
 
