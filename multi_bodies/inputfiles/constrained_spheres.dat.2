@@ -10,8 +10,8 @@ blob_blob_force_implementation           None
 body_body_force_torque_implementation    python
 
 # Set time step, number of steps and save frequency
-dt                                       0.0008459045331252788
-n_steps                                  2000
+dt                                       3.354860324377959e-06
+n_steps                                  800
 n_save                                   1
 
 do_rotation                              False
@@ -19,7 +19,7 @@ update_PC                                100
 
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0
-g                                        24.312203710398567
+g                                        386.0537544347618
 blob_radius                              0.13100877695
 
 # Stochastic parameters
@@ -29,11 +29,11 @@ kT                                       1
 rf_delta                                 1.0e-6
 
 # Set parameters for the blob-blob interation
-repulsion_strength                       5
+repulsion_strength                       8
 debye_length                             2.1
 
 # Set interaction with the wall
-repulsion_strength_wall                  5
+repulsion_strength_wall                  8
 debye_length_wall                        2.0
 
 # seed                                     0
