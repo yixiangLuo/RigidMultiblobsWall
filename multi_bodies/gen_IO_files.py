@@ -7,16 +7,17 @@ threadsEach = 1
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
-n_steps = 200*1
+n_steps = 100*1
 blob_radius = 0.26201755389999998/2       # 162 blobs
 # blob_radius = 0.13505535066599994/2        # 642 blobs
 kT = 1
-repulsion_strength = np.array([8])     # E
-rho = 0.3663/np.sqrt(repulsion_strength)*np.exp(repulsion_strength/kT)       # named "g" in the file
-dt = 20/repulsion_strength/np.power(rho, 2)/1
+sigma = np.array([0.01])
+repulsion_strength = kT/2.0/np.power(sigma, 2)     # quadratic coefficient
+# rho = 0.3663/np.sqrt(repulsion_strength)*np.exp(repulsion_strength/kT)       # named "g" in the file
+dt = 20/repulsion_strength/1
 debye_length = 2.1
 repulsion_strength_wall = repulsion_strength
-debye_length_wall = 2.0
+debye_length_wall = 1.1
 modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
 # modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
 
@@ -44,14 +45,11 @@ update_PC                                100
 
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0
-g                                        ''' + str(rho[ex]) +'''
+g                                        0
 blob_radius                              ''' + str(blob_radius) +'''
 
 # Stochastic parameters
 kT                                       ''' + str(kT) +'''
-
-# RFD parameters
-rf_delta                                 1.0e-6
 
 # Set parameters for the blob-blob interation
 repulsion_strength                       ''' + str(repulsion_strength[ex]) +'''

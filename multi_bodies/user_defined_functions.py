@@ -125,17 +125,16 @@ def bodies_external_force_torque_new(bodies, r_vectors, *args, **kwargs):
 
   E = kwargs.get('repulsion_strength_wall')
   d = kwargs.get('debye_length_wall')
-  rho = kwargs.get('g');
-  maxabs = 1e3
+  # rho = kwargs.get('g');
 
   # Double loop over bodies to compute forces
   for i in range(Nbodies):
       # Compute vector from j to u
       r = bodies[i].location[2]
-      aux = np.exp(- rho * (r - d))
+      # aux = np.exp(- rho * (r - d))
       # Add forces
-      force_torque_bodies[2*i] += np.array([0., 0., max(min(-2*rho*E*(aux - aux**2), maxabs), -maxabs)])
-      # print(-2*rho*E*(aux - aux**2))
+      # force_torque_bodies[2*i] += np.array([0., 0., -2*rho*E*(aux - aux**2)])
+      force_torque_bodies[2*i] += np.array([0., 0., -2*E*(r - d)])
 
   return force_torque_bodies
 multi_bodies_functions.bodies_external_force_torque = bodies_external_force_torque_new
@@ -160,12 +159,12 @@ def body_body_force_torque_new(r, quaternion_i, quaternion_j, *args, **kwargs):
   # Get parameters from arguments
   E = kwargs.get('repulsion_strength')
   d = kwargs.get('debye_length')
-  rho = kwargs.get('g');
-  maxabs = 1e3
+  # rho = kwargs.get('g');
 
   # Compute force
   r_norm = np.linalg.norm(r)
-  aux = np.exp(- rho * (r_norm - d))
-  force_torque[0] = max(min(2*rho*E*(aux - aux**2), maxabs), -maxabs) * (r / r_norm)
+  # aux = np.exp(- rho * (r_norm - d))
+  # force_torque[0] = 2*rho*E*(aux - aux**2) * (r / r_norm)
+  force_torque[0] = 2*E*(r - d) * (r / r_norm)
   return force_torque
 multi_bodies_functions.body_body_force_torque =  body_body_force_torque_new
