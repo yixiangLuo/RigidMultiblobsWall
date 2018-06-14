@@ -165,6 +165,6 @@ def body_body_force_torque_new(r, quaternion_i, quaternion_j, *args, **kwargs):
   r_norm = np.linalg.norm(r)
   # aux = np.exp(- rho * (r_norm - d))
   # force_torque[0] = 2*rho*E*(aux - aux**2) * (r / r_norm)
-  force_torque[0] = 2*E*(r - d) * (r / r_norm)
+  force_torque[0] = 2*E*(r_norm - d) * (r / r_norm)
   return force_torque
 multi_bodies_functions.body_body_force_torque =  body_body_force_torque_new

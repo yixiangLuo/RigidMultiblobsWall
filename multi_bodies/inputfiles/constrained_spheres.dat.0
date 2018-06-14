@@ -10,12 +10,16 @@ blob_blob_force_implementation           None
 body_body_force_torque_implementation    python
 
 # Set time step, number of steps and save frequency
-dt                                       0.004
-n_steps                                  100
+dt                                       0.001
+n_steps                                  400
 n_save                                   1
 
 do_rotation                              False
-update_PC                                100
+update_PC                                1000
+solver_tolerance                         1e-5
+
+solver_tolerance                         1.0e-3
+rf_delta                                 1.0e-3
 
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0

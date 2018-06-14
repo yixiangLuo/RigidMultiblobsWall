@@ -7,14 +7,14 @@ threadsEach = 1
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
-n_steps = 100*1
+n_steps = 100*4
 blob_radius = 0.26201755389999998/2       # 162 blobs
 # blob_radius = 0.13505535066599994/2        # 642 blobs
 kT = 1
 sigma = np.array([0.01])
 repulsion_strength = kT/2.0/np.power(sigma, 2)     # quadratic coefficient
 # rho = 0.3663/np.sqrt(repulsion_strength)*np.exp(repulsion_strength/kT)       # named "g" in the file
-dt = 20/repulsion_strength/1
+dt = 20/repulsion_strength/4
 debye_length = 2.1
 repulsion_strength_wall = repulsion_strength
 debye_length_wall = 1.1
@@ -41,7 +41,11 @@ n_steps                                  ''' + str(n_steps) +'''
 n_save                                   1
 
 do_rotation                              False
-update_PC                                100
+update_PC                                1000
+solver_tolerance                         1e-5
+
+solver_tolerance                         1.0e-3
+rf_delta                                 1.0e-3
 
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0

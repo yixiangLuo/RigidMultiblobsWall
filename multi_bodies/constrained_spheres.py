@@ -31,14 +31,14 @@ for sample_iter in range(sample):
     sigma = np.sqrt(para.kT/(2*para.repulsion_strength))
     d = [para.debye_length + np.random.normal(0, sigma), para.debye_length + np.random.normal(0, sigma)]
     z = str(para.debye_length_wall + np.random.normal(0, sigma))
-    # bodies.write("3\n \
-    #             0	0	" + z + "	1	0	0	0\n" + \
-    #             str(d[0]) +"	0	" + z + "	" + rd_quaternion1 + "\n" + \
-    #             str(d[1] * np.cos(np.pi/2.)) +"	" + str(d[1] * np.sin(np.pi/2.)) + "	" + z + "	" + rd_quaternion2
-    #             )
-    bodies.write("1\n \
-                0	0	" + z + "	1	0	0	0"
+    bodies.write("3\n \
+                0	0	" + z + "	1	0	0	0\n" + \
+                str(d[0]) +"	0	" + z + "	" + rd_quaternion1 + "\n" + \
+                str(d[1] * np.cos(np.pi/2.)) +"	" + str(d[1] * np.sin(np.pi/2.)) + "	" + z + "	" + rd_quaternion2
                 )
+    # bodies.write("1\n \
+    #             0	0	" + z + "	1	0	0	0"
+    #             )
 
     sys.argv = ['multi_bodies.py', '--input-file', 'inputfiles/constrained_spheres.dat.' + No, '--print-residual']
     execfile('multi_bodies.py')
