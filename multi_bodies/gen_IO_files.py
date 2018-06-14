@@ -3,7 +3,7 @@ import os
 import re
 import numpy as np
 
-threadsEach = 1
+threadsEach = 2
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
@@ -42,7 +42,6 @@ n_save                                   1
 
 do_rotation                              False
 update_PC                                1000
-solver_tolerance                         1e-5
 
 solver_tolerance                         1.0e-3
 rf_delta                                 1.0e-3
