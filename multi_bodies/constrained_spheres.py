@@ -6,7 +6,7 @@ sys.path.append('../')
 from read_input import read_input
 import ntpath
 
-sample = 100
+sample = 300
 
 def str_list(l):
     return [str(e) for e in list(l)]
@@ -40,7 +40,7 @@ for sample_iter in range(sample):
     #             0	0	" + z + "	1	0	0	0"
     #             )
 
-    sys.argv = ['multi_bodies.py', '--input-file', 'inputfiles/constrained_spheres.dat.' + No, '--print-residual']
+    sys.argv = ['multi_bodies.py', '--input-file', 'inputfiles/constrained_spheres.dat.' + No]
     execfile('multi_bodies.py')
 
     with open(os.path.join(path, "run.constrained_spheres.config"), 'r') as f:

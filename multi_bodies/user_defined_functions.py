@@ -134,7 +134,9 @@ def bodies_external_force_torque_new(bodies, r_vectors, *args, **kwargs):
       # aux = np.exp(- rho * (r - d))
       # Add forces
       # force_torque_bodies[2*i] += np.array([0., 0., -2*rho*E*(aux - aux**2)])
-      force_torque_bodies[2*i] += np.array([0., 0., -2*E*(r - d)])
+      if r>1.05*d: displace = 0
+      else: displace = r - d
+      force_torque_bodies[2*i] += np.array([0., 0., -2*E*displace])
 
   return force_torque_bodies
 multi_bodies_functions.bodies_external_force_torque = bodies_external_force_torque_new
@@ -165,6 +167,8 @@ def body_body_force_torque_new(r, quaternion_i, quaternion_j, *args, **kwargs):
   r_norm = np.linalg.norm(r)
   # aux = np.exp(- rho * (r_norm - d))
   # force_torque[0] = 2*rho*E*(aux - aux**2) * (r / r_norm)
-  force_torque[0] = 2*E*(r_norm - d) * (r / r_norm)
+  if r_norm>1.05*d: displace = 0
+  else: displace = r_norm - d
+  force_torque[0] = 2*E*displace * (r / r_norm)
   return force_torque
 multi_bodies_functions.body_body_force_torque =  body_body_force_torque_new
