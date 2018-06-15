@@ -3,18 +3,18 @@ import os
 import re
 import numpy as np
 
-threadsEach = 2
+threadsEach = 1
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
-n_steps = 50*20
+n_steps = 50
 blob_radius = 0.26201755389999998/2       # 162 blobs
 # blob_radius = 0.13505535066599994/2        # 642 blobs
 kT = 1
-sigma = np.array([0.01])
+sigma = 0.01 / np.array([1, 2, 4, 8])
 repulsion_strength = kT/2.0/np.power(sigma, 2)     # quadratic coefficient
 # rho = 0.3663/np.sqrt(repulsion_strength)*np.exp(repulsion_strength/kT)       # named "g" in the file
-dt = 20/repulsion_strength
+dt = 20.0/repulsion_strength
 debye_length = 2.1
 repulsion_strength_wall = repulsion_strength
 debye_length_wall = 1.1
