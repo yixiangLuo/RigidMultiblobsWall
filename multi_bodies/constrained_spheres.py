@@ -6,7 +6,7 @@ sys.path.append('../')
 from read_input import read_input
 import ntpath
 
-sample = 300
+sample = 4
 
 def str_list(l):
     return [str(e) for e in list(l)]
