@@ -10,8 +10,8 @@ blob_blob_force_implementation           None
 body_body_force_torque_implementation    python
 
 # Set time step, number of steps and save frequency
-dt                                       0.001
-n_steps                                  50
+dt                                       0.008
+n_steps                                  500
 n_save                                   1
 
 do_rotation                              False
@@ -23,17 +23,17 @@ rf_delta                                 1.0e-3
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0
 g                                        0
-blob_radius                              0.067527675333
+blob_radius                              0.13100877695
 
 # Stochastic parameters
 kT                                       1
 
 # Set parameters for the blob-blob interation
-repulsion_strength                       20000.0
+repulsion_strength                       5000.0
 debye_length                             2.1
 
 # Set interaction with the wall
-repulsion_strength_wall                  20000.0
+repulsion_strength_wall                  5000.0
 debye_length_wall                        1.1
 
 # seed                                     0
@@ -45,5 +45,5 @@ save_clones                              one_file
 
 # Load rigid bodies configuration, provide
 # *.vertex and *.clones files
-structure Structures/shell_N_642_Rg_0_9767_Rh_1.vertex data/1/constrained_spheres.clones
+structure Structures/shell_N_162_Rg_0_9497_Rh_1.vertex data/1/constrained_spheres.clones
             

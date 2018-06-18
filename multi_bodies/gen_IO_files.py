@@ -3,23 +3,23 @@ import os
 import re
 import numpy as np
 
-threadsEach = 1
+threadsEach = 2
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
-n_steps = 50
-# blob_radius = 0.26201755389999998/2       # 162 blobs
-blob_radius = 0.13505535066599994/2        # 642 blobs
+n_steps = 50*20/2
+blob_radius = 0.26201755389999998/2       # 162 blobs
+# blob_radius = 0.13505535066599994/2        # 642 blobs
 kT = 1
-sigma = 0.01 / np.array([1, 2, 4, 8])
+sigma = 0.01 / np.array([1])
 repulsion_strength = kT/2.0/np.power(sigma, 2)     # quadratic coefficient
 # rho = 0.3663/np.sqrt(repulsion_strength)*np.exp(repulsion_strength/kT)       # named "g" in the file
-dt = 20.0/repulsion_strength
+dt = 20.0/repulsion_strength*2
 debye_length = 2.1
 repulsion_strength_wall = repulsion_strength
 debye_length_wall = 1.1
-# modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
-modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
+modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
+# modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
 
 for ex in range(len(repulsion_strength)):
     for thread in range(ex*threadsEach, (ex+1)*threadsEach):
