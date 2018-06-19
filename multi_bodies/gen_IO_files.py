@@ -3,18 +3,18 @@ import os
 import re
 import numpy as np
 
-threadsEach = 2
+threadsEach = 1
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
-n_steps = 50*20/2
+n_steps = 25
 blob_radius = 0.26201755389999998/2       # 162 blobs
 # blob_radius = 0.13505535066599994/2        # 642 blobs
 kT = 1
-sigma = 0.01 / np.array([1])
+sigma = 0.01 * np.array([5, 2.5])
 repulsion_strength = kT/2.0/np.power(sigma, 2)     # quadratic coefficient
 # rho = 0.3663/np.sqrt(repulsion_strength)*np.exp(repulsion_strength/kT)       # named "g" in the file
-dt = 20.0/repulsion_strength*2
+dt = 20.0/repulsion_strength
 debye_length = 2.1
 repulsion_strength_wall = repulsion_strength
 debye_length_wall = 1.1
@@ -28,7 +28,7 @@ for ex in range(len(repulsion_strength)):
 scheme                                   stochastic_Slip_Trapz
 
 # Select implementation to compute M and M*f
-mobility_blobs_implementation            python
+mobility_blobs_implementation            C++
 mobility_vector_prod_implementation      pycuda
 
 # Select implementation to compute the blobs-blob interactions
