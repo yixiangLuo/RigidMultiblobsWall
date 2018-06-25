@@ -3,7 +3,7 @@ import os
 import re
 import numpy as np
 
-threadsEach = 1
+threadsEach = 4
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
@@ -23,7 +23,7 @@ scheme                                   body_mobility
 
 # Select implementation to compute M and M*f
 mobility_blobs_implementation            C++
-mobility_vector_prod_implementation      pycuda
+mobility_vector_prod_implementation      C++
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
