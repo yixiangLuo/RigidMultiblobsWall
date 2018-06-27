@@ -142,6 +142,19 @@ def plot_velocity_field(grid, r_vectors_blobs, lambda_blobs, blob_radius, eta, o
                                             variables) # Variables
   return
 
+class gmres_counter(object):
+  '''
+  Callback generator to count iterations.
+  '''
+  def __init__(self, print_residual = False):
+    self.print_residual = print_residual
+    self.niter = 0
+  def __call__(self, rk=None):
+    self.niter += 1
+    if self.print_residual is True:
+      if self.niter == 1:
+        print 'gmres =  0 1'
+      print 'gmres = ', self.niter, rk
 
 if __name__ ==  '__main__':
   # Get command line arguments
@@ -337,8 +350,9 @@ if __name__ ==  '__main__':
     # Loop over bodies
     for k, b in enumerate(bodies):
       # 1. Compute blobs mobility and invert it
-      M = b.calc_mobility_blobs(read.eta, read.blob_radius)
-      M_inv = np.linalg.inv(M)
+      if k==0:  # calculate M inverse only for the first sphere and reuse it
+          M = b.calc_mobility_blobs(read.eta, read.blob_radius)
+          M_inv = np.linalg.inv(M)
       mobility_inv_blobs.append(M_inv)
       # 2. Compute body mobility
       N = b.calc_mobility_body(read.eta, read.blob_radius, M_inv = M_inv)
@@ -350,17 +364,19 @@ if __name__ ==  '__main__':
     PC = spla.LinearOperator((System_size, System_size), matvec = PC_partial, dtype='float64')
 
     Mobility = []
-    for col in range(num_bodies * 6):
-        # Set right hand side
-        force_torque = np.zeros(6 * num_bodies)
-        force_torque[col] = 1
-        force_torque = np.reshape(force_torque, (2*num_bodies, 3))
-        RHS = np.reshape(np.concatenate([np.zeros((Nblobs, 3)), -force_torque]), (System_size))
-        # Solve preconditioned linear system # callback=make_callback()
-        (sol_precond, info_precond) = utils.gmres(A, RHS, tol=read.solver_tolerance, M=PC, maxiter=1000, restart=60)
+    for b_i in range(num_bodies):
+        for c_i in range(3):
+            # Set right hand side
+            force_torque = np.zeros(6 * num_bodies)
+            force_torque[b_i*6+c_i] = 1
+            force_torque = np.reshape(force_torque, (2*num_bodies, 3))
+            RHS = np.reshape(np.concatenate([np.zeros((Nblobs, 3)), -force_torque]), (System_size))
+            # Solve preconditioned linear system # callback=make_callback()
+            counter = gmres_counter(print_residual = args.print_residual)
+            (sol_precond, info_precond) = utils.gmres(A, RHS, tol=read.solver_tolerance, M=PC, maxiter=1000, restart=60, callback=counter)
 
-        # Extract one column of the mobility matrix
-        Mobility.append(sol_precond[3*Nblobs: 3*Nblobs + 6*num_bodies])
+            # Extract one column of the mobility matrix
+            Mobility.append(sol_precond[3*Nblobs: 3*Nblobs + 6*num_bodies])
 
     # Save velocity
     name = read.output_name + '.body_mobility.dat'

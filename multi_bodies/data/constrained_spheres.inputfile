@@ -9,12 +9,14 @@ mobility_vector_prod_implementation      C++
 blob_blob_force_implementation           None
 body_body_force_torque_implementation    python
 
-solver_tolerance                         1.0e-6
-rf_delta                                 1.0e-6
+solver_tolerance                         1.0e-5
+rf_delta                                 1.0e-5
 
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0
 blob_radius                              0.13100877695
+# blob_radius                              0.067527675
+# blob_radius                              0.034204979
 
 # Set output name
 output_name                              data/constrained_spheres
