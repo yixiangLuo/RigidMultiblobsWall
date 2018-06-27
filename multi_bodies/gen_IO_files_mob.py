@@ -3,17 +3,17 @@ import os
 import re
 import numpy as np
 
-threadsEach = 4
+threadsEach = 1
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
 d = [2.1, 2.066, 2.033, 2.0]
 
-# blob_radius = 0.26201755389999998/2       # 162 blobs
-blob_radius = 0.13505535066599994/2        # 642 blobs
+blob_radius = 0.26201755389999998/2       # 162 blobs
+# blob_radius = 0.13505535066599994/2        # 642 blobs
 
-# modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
-modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
+modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
+# modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
 
 for ex in range(len(d)):
     for thread in range(ex*threadsEach, (ex+1)*threadsEach):
