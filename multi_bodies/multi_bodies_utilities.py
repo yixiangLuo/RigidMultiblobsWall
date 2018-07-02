@@ -344,13 +344,14 @@ if __name__ ==  '__main__':
     linear_operator_partial = partial(multi_bodies.linear_operator_rigid, bodies=bodies, r_vectors=r_vectors_blobs, eta=read.eta, a=read.blob_radius)
     A = spla.LinearOperator((System_size, System_size), matvec = linear_operator_partial, dtype='float64')
 
+    '''
     # Set preconditioner
     mobility_inv_blobs = []
     mobility_bodies = np.empty((len(bodies), 6, 6))
     # Loop over bodies
     for k, b in enumerate(bodies):
       # 1. Compute blobs mobility and invert it
-      if k==0:  # calculate M inverse only for the first sphere and reuse it
+      if k>=0:  # calculate M inverse only for the first sphere and reuse it
           M = b.calc_mobility_blobs(read.eta, read.blob_radius)
           M_inv = np.linalg.inv(M)
       mobility_inv_blobs.append(M_inv)
@@ -362,6 +363,8 @@ if __name__ ==  '__main__':
     PC_partial = partial(multi_bodies.block_diagonal_preconditioner, bodies=bodies, mobility_bodies=mobility_bodies, \
                            mobility_inv_blobs=mobility_inv_blobs, Nblobs=Nblobs)
     PC = spla.LinearOperator((System_size, System_size), matvec = PC_partial, dtype='float64')
+    '''
+    PC = None
 
     Mobility = []
     for b_i in range(num_bodies):

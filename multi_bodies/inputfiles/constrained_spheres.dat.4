@@ -3,7 +3,7 @@ scheme                                   body_mobility
 
 # Select implementation to compute M and M*f
 mobility_blobs_implementation            C++
-mobility_vector_prod_implementation      C++
+mobility_vector_prod_implementation      pycuda
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
@@ -14,16 +14,15 @@ rf_delta                                 1.0e-5
 
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0
-blob_radius                              0.13100877695
-# blob_radius                              0.067527675
-# blob_radius                              0.034204979
+blob_radius                              0.034204978919
+
+debye_length                             2.1
+debye_length_wall                        1.1
 
 # Set output name
-output_name                              data/constrained_spheres
+output_name                              data/4/mob
 
 # Load rigid bodies configuration, provide
 # *.vertex and *.clones files
-structure Structures/shell_N_162_Rg_0_9497_Rh_1.vertex constrained_spheres.clones
-# structure Structures/shell_N_642_Rg_0_9767_Rh_1.vertex constrained_spheres.clones
-# structure Structures/shell_N_2562_Rg_0_9888_Rh_1.vertex constrained_spheres.clones
+structure Structures/shell_N_2562_Rg_0_9888_Rh_1.vertex data/4/constrained_spheres.clones
             

@@ -7,13 +7,19 @@ threadsEach = 1
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
-d = [2.1, 2.066, 2.033, 2.0]
+d = [2.1]
 
-blob_radius = 0.26201755389999998/2       # 162 blobs
+blob_radius = 0.83284136573349932/2       # 12 blobs
+# blob_radius = 0.48710611214400001/2       # 42 blobs
+# blob_radius = 0.26201755389999998/2       # 162 blobs
 # blob_radius = 0.13505535066599994/2        # 642 blobs
+# blob_radius = 0.0684099578379999268/2        # 2562 blobs
 
-modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
+modelFile = 'Structures/shell_N_12_Rg_0_7921_Rh_1.vertex'
+# modelFile = 'Structures/shell_N_42_Rg_0_8913_Rh_1.vertex'
+# modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
 # modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
+# modelFile = 'Structures/shell_N_2562_Rg_0_9888_Rh_1.vertex'
 
 for ex in range(len(d)):
     for thread in range(ex*threadsEach, (ex+1)*threadsEach):
@@ -23,14 +29,14 @@ scheme                                   body_mobility
 
 # Select implementation to compute M and M*f
 mobility_blobs_implementation            C++
-mobility_vector_prod_implementation      C++
+mobility_vector_prod_implementation      pycuda
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
 body_body_force_torque_implementation    python
 
-solver_tolerance                         1.0e-3
-rf_delta                                 1.0e-3
+solver_tolerance                         1.0e-5
+rf_delta                                 1.0e-5
 
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0
