@@ -9,17 +9,31 @@ outputFilePath = 'data/'
 
 d = [2.1]
 
-blob_radius = 0.83284136573349932/2       # 12 blobs
+# ----- R_h = 1
+# blob_radius = 0.83284136573349932/2       # 12 blobs
 # blob_radius = 0.48710611214400001/2       # 42 blobs
 # blob_radius = 0.26201755389999998/2       # 162 blobs
 # blob_radius = 0.13505535066599994/2        # 642 blobs
 # blob_radius = 0.0684099578379999268/2        # 2562 blobs
 
-modelFile = 'Structures/shell_N_12_Rg_0_7921_Rh_1.vertex'
+# modelFile = 'Structures/shell_N_12_Rg_0_7921_Rh_1.vertex'
 # modelFile = 'Structures/shell_N_42_Rg_0_8913_Rh_1.vertex'
 # modelFile = 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex'
 # modelFile = 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex'
 # modelFile = 'Structures/shell_N_2562_Rg_0_9888_Rh_1.vertex'
+
+# ----- R_g = 1
+blob_radius = 1.051462224238267/2       # 12 blobs
+# blob_radius = 0.5465330578253432/2       # 42 blobs
+# blob_radius = 0.2759044842552673/2       # 162 blobs
+# blob_radius = 0.1382831735471675/2        # 642 blobs
+# blob_radius = 0.06918299036149883/2        # 2562 blobs
+
+modelFile = 'Structures/shell_N_12_Rg_1_Rh_1_2625.vertex'
+# modelFile = 'Structures/shell_N_42_Rg_1_Rh_1_1220.vertex'
+# modelFile = 'Structures/shell_N_162_Rg_1_Rh_1_0530.vertex'
+# modelFile = 'Structures/shell_N_642_Rg_1_Rh_1_0239.vertex'
+# modelFile = 'Structures/shell_N_2562_Rg_1_Rh_1_0113.vertex'
 
 for ex in range(len(d)):
     for thread in range(ex*threadsEach, (ex+1)*threadsEach):

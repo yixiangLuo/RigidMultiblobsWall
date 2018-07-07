@@ -14,7 +14,7 @@ rf_delta                                 1.0e-5
 
 # Set fluid viscosity (eta), gravity (g) and blob radius
 eta                                      1.0
-blob_radius                              0.416420682867
+blob_radius                              0.525731112119
 
 debye_length                             2.1
 debye_length_wall                        1.1
@@ -24,5 +24,5 @@ output_name                              data/0/mob
 
 # Load rigid bodies configuration, provide
 # *.vertex and *.clones files
-structure Structures/shell_N_12_Rg_0_7921_Rh_1.vertex data/0/constrained_spheres.clones
+structure Structures/shell_N_12_Rg_1_Rh_1_2625.vertex data/0/constrained_spheres.clones
             
