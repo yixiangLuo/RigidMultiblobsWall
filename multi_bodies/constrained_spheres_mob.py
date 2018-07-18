@@ -6,12 +6,13 @@ sys.path.append('../')
 from read_input import read_input
 import ntpath
 
-para_num = 1
+para_num = 9
 sample_per_para = 10
 
 # angle = np.linspace(1.0/3, 1.0, num=para_num)*np.pi
 angle = np.linspace(1.0/3, 1.0/3, num=para_num)*np.pi
-distance = np.linspace(2.1, 2.02, num=para_num)
+
+epsilon = np.linspace(0.1, 0.02, num=para_num)
 
 def str_list(l):
     return [str(e) for e in list(l)]
@@ -35,13 +36,18 @@ for para_iter in range(para_num):
         rd_quaternion3 = '	'.join(str_list(rd_quaternion3))
 
         bodies = open(os.path.join(path, "constrained_spheres.clones"), "w")
-        d = distance[para_iter]
-        h = str(distance[para_iter]-1.0)
+        d = 1*2 + epsilon[para_iter]
+        h = 1 + epsilon[para_iter]/2.0
+
         bodies.write("3\n \
-                    0	0	" + h + "	" + rd_quaternion1 + "\n" + \
-                    str(d) +"	0	" + h + "	" + rd_quaternion2 + "\n" + \
-                    str(d * np.cos(angle[para_iter])) +"	" + str(d * np.sin(angle[para_iter])) + "	" + h + "	" + rd_quaternion3
+                    0	0	" + str(h) + "	" + rd_quaternion1 + "\n" + \
+                    str(d) +"	0	" + str(h) + "	" + rd_quaternion2 + "\n" + \
+                    str(d * np.cos(angle[para_iter])) +"	" + str(d * np.sin(angle[para_iter])) + "	" + str(h) + "	" + rd_quaternion3
                     )
+
+        # bodies.write("1\n \
+        #             0	0	" + str(h) + "	" + rd_quaternion1
+        #             )
 
         sys.argv = ['multi_bodies_utilities.py', '--input-file', 'inputfiles/constrained_spheres.dat.' + No]
         execfile('multi_bodies_utilities.py')
