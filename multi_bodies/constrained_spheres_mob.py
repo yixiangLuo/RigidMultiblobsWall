@@ -6,18 +6,18 @@ sys.path.append('../')
 from read_input import read_input
 import ntpath
 
-para_num = 9
-sample_per_para = 10
+para_num = 1
+sample_per_para = 1
 
 # angle = np.linspace(1.0/3, 1.0, num=para_num)*np.pi
-angle = np.linspace(1.0/3, 1.0/3, num=para_num)*np.pi
+angle = np.linspace(1.0, 1.0, num=para_num)*np.pi
 
-epsilon = np.linspace(0.1, 0.02, num=para_num)
+epsilon = np.linspace(0.2, 0.2, num=para_num)
 
 def str_list(l):
     return [str(e) for e in list(l)]
 
-No = "0"
+No = "4"
 para = read_input.ReadInput('inputfiles/constrained_spheres.dat.' + No)
 path = "data/" + No
 

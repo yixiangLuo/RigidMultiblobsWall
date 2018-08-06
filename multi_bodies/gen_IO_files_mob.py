@@ -3,7 +3,7 @@ import os
 import re
 import numpy as np
 
-threadsEach = 2
+threadsEach = 1
 inputFilePath = 'inputfiles/'
 outputFilePath = 'data/'
 
@@ -13,6 +13,9 @@ blob_radius = np.array([0.83284136573349932, 0.48710611214400001, 0.262017553899
 modelFile = ['Structures/shell_N_12_Rg_0_7921_Rh_1.vertex', 'Structures/shell_N_42_Rg_0_8913_Rh_1.vertex', 'Structures/shell_N_162_Rg_0_9497_Rh_1.vertex', 'Structures/shell_N_642_Rg_0_9767_Rh_1.vertex', 'Structures/shell_N_2562_Rg_0_9888_Rh_1.vertex']
 
 expNum=len(blob_radius)
+
+nowall_appendix = '_no_wall'
+# nowall_appendix = ''
 
 # ----- R_h = 1
 # blob_radius = 0.83284136573349932/2       # 12 blobs
@@ -48,12 +51,12 @@ for ex in range(expNum):
 scheme                                   body_mobility
 
 # Select implementation to compute M and M*f
-mobility_blobs_implementation            C++
-mobility_vector_prod_implementation      pycuda
+mobility_blobs_implementation            C++''' + nowall_appendix + '''
+mobility_vector_prod_implementation      pycuda''' + nowall_appendix + '''
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
-body_body_force_torque_implementation    python
+body_body_force_torque_implementation    python''' + nowall_appendix + '''
 
 solver_tolerance                         1.0e-5
 rf_delta                                 1.0e-5

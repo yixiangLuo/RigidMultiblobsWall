@@ -2,12 +2,12 @@
 scheme                                   body_mobility
 
 # Select implementation to compute M and M*f
-mobility_blobs_implementation            C++
-mobility_vector_prod_implementation      pycuda
+mobility_blobs_implementation            C++_no_wall
+mobility_vector_prod_implementation      pycuda_no_wall
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
-body_body_force_torque_implementation    python
+body_body_force_torque_implementation    python_no_wall
 
 solver_tolerance                         1.0e-5
 rf_delta                                 1.0e-5
