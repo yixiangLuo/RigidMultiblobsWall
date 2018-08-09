@@ -6,18 +6,19 @@ sys.path.append('../')
 from read_input import read_input
 import ntpath
 
-para_num = 1
-sample_per_para = 1
+para_num = 2
+sample_per_para = 7
 
 # angle = np.linspace(1.0/3, 1.0, num=para_num)*np.pi
-angle = np.linspace(1.0, 1.0, num=para_num)*np.pi
+angle = np.linspace(1.0/3, 1.0/3, num=para_num)*np.pi
 
-epsilon = np.linspace(0.2, 0.2, num=para_num)
+epsilon = np.linspace(0.1, 0.01, num=para_num)
+
 
 def str_list(l):
     return [str(e) for e in list(l)]
 
-No = "4"
+No = "1"
 para = read_input.ReadInput('inputfiles/constrained_spheres.dat.' + No)
 path = "data/" + No
 
@@ -44,10 +45,17 @@ for para_iter in range(para_num):
                     str(d) +"	0	" + str(h) + "	" + rd_quaternion2 + "\n" + \
                     str(d * np.cos(angle[para_iter])) +"	" + str(d * np.sin(angle[para_iter])) + "	" + str(h) + "	" + rd_quaternion3
                     )
-
-        # bodies.write("1\n \
-        #             0	0	" + str(h) + "	" + rd_quaternion1
-        #             )
+        '''
+        bodies.write("2\n \
+                    0	0	" + str(h) + "	" + rd_quaternion1 + "\n" + \
+                    str(d) +"	0	" + str(h) + "	" + rd_quaternion2
+                    )
+        '''
+        '''
+        bodies.write("1\n \
+                    0	0	" + str(h) + "	" + rd_quaternion1
+                    )
+        '''
 
         sys.argv = ['multi_bodies_utilities.py', '--input-file', 'inputfiles/constrained_spheres.dat.' + No]
         execfile('multi_bodies_utilities.py')

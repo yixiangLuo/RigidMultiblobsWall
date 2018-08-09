@@ -14,8 +14,8 @@ modelFile = ['Structures/shell_N_12_Rg_0_7921_Rh_1.vertex', 'Structures/shell_N_
 
 expNum=len(blob_radius)
 
-nowall_appendix = '_no_wall'
-# nowall_appendix = ''
+nowall_flag = '_no_wall'
+# nowall_flag = ''
 
 # ----- R_h = 1
 # blob_radius = 0.83284136573349932/2       # 12 blobs
@@ -51,12 +51,12 @@ for ex in range(expNum):
 scheme                                   body_mobility
 
 # Select implementation to compute M and M*f
-mobility_blobs_implementation            C++''' + nowall_appendix + '''
-mobility_vector_prod_implementation      pycuda''' + nowall_appendix + '''
+mobility_blobs_implementation            C++''' + nowall_flag + '''
+mobility_vector_prod_implementation      pycuda''' + nowall_flag + '''
 
 # Select implementation to compute the blobs-blob interactions
 blob_blob_force_implementation           None
-body_body_force_torque_implementation    python''' + nowall_appendix + '''
+body_body_force_torque_implementation    python''' + nowall_flag + '''
 
 solver_tolerance                         1.0e-5
 rf_delta                                 1.0e-5

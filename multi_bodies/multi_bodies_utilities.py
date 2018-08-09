@@ -368,7 +368,7 @@ if __name__ ==  '__main__':
 
     Mobility = []
     for b_i in range(num_bodies):
-        for c_i in range(3):
+        for c_i in range(6):
             # Set right hand side
             force_torque = np.zeros(6 * num_bodies)
             force_torque[b_i*6+c_i] = 1
